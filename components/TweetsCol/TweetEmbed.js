@@ -10,8 +10,8 @@ const TweetEmbed = () => {
           target="_blank"
           rel="noopener noreferrer">
           <img
-            alt="Naval"
-            src="https://pbs.twimg.com/profile_images/1256841238298292232/ycqwaMI2_400x400.jpg"
+            alt="profil"
+            src="https://lh3.googleusercontent.com/a-/AOh14GhSgox9LcmhLHwi33Wos7ReukV0fdSiJOTU1yxJeQ=s96-c"
             className="rounded-full"
           />
         </a>
