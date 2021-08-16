@@ -8,8 +8,8 @@ import {
 
 const SidebarMenu = () => {
   return (
-    <div className="w-2/12 flex flex-col items-center bg-gray-900 px-6 py-4 text-white">
-      <div className="flex flex-col h-full justify-between">
+    <div className="w-2/12 flex flex-col items-center bg-gray-900 py-4 text-white">
+      <div className="flex flex-col h-full justify-between w-3/5">
         <Link href="/">
           <a className="text-3xl font-bold mt-16 tracking-tighter">
             Monitor
@@ -42,7 +42,7 @@ const SidebarMenu = () => {
         </div>
         <div className="divide-y divide-gray-400">
           <div></div>
-          <p className="text-gray-400 pt-2 text-sm">© 2021 by los changos</p>
+          <p className="text-gray-400 pt-2 text-sm text-center">© 2021 by los changos</p>
         </div>
       </div>
     </div>

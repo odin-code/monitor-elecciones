@@ -22,10 +22,10 @@ const VideoCol = () => {
       <div className="w-full h-3/3 mb-4">
         <YouTubeEmbed embedId="wHn1_QVoXGM" height="480" />
       </div>
-      <div className="h-2 grid grid-rows-1 grid-flow-col gap-4 mb-4">
-        <YouTubeEmbed embedId="ns8-5XKA0Ww" />
-        <YouTubeEmbed embedId="h0t2XAwr0ks" />
-        <YouTubeEmbed embedId="MMzAVO7WTcg" />
+      <div className="grid grid-rows-1 grid-flow-col gap-4 mb-4">
+        <YouTubeEmbed embedId="ns8-5XKA0Ww" height="200" />
+        <YouTubeEmbed embedId="h0t2XAwr0ks" height="200" />
+        <YouTubeEmbed embedId="MMzAVO7WTcg" height="200" />
       </div>
     </div>
   );

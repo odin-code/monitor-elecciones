@@ -4,7 +4,7 @@ import SidebarMenu from "../components/SidebarMenu";
 
 export default function Home() {
   return (
-    <div className="flex flex-row h-screen overflow-auto max-w-screen-2xl ">
+    <div className="flex flex-row h-screen overflow-auto">
       <SidebarMenu />
       <VideoCol />
       <TweetsCol />
