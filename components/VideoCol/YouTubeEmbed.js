@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 const YouTubeEmbed = ({ embedId, height }) => (
   <div>
     <iframe
+      className="rounded"
       width="100%"
       height={height}
       src={`https://www.youtube.com/embed/${embedId}`}
@@ -16,7 +17,7 @@ const YouTubeEmbed = ({ embedId, height }) => (
 );
 
 YouTubeEmbed.propTypes = {
-  embedId: PropTypes.string.isRequired
+  embedId: PropTypes.string.isRequired,
 };
 
 export default YouTubeEmbed;
