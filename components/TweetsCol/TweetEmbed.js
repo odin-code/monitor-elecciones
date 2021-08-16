@@ -6,7 +6,7 @@ const TweetEmbed = () => {
       <div className="flex items-center">
         <a
           className="flex h-12 w-12"
-          href="https://twitter.com/naval"
+          href="https://twitter.com/imanolrtega"
           target="_blank"
           rel="noopener noreferrer">
           <img
@@ -16,7 +16,7 @@ const TweetEmbed = () => {
           />
         </a>
         <a
-          href="https://twitter.com/naval"
+          href="https://twitter.com/imanolrtega"
           className="author"
           target="_blank"
           rel="noopener noreferrer"
@@ -41,7 +41,7 @@ const TweetEmbed = () => {
         </a>
         <a
           className="ml-auto"
-          href="https://twitter.com/naval"
+          href="https://twitter.com/imanolrtega"
           target="_blank"
           rel="noopener noreferrer">
           <svg
@@ -61,7 +61,7 @@ const TweetEmbed = () => {
       </div>
       <a
         className="text-gray-500 text-sm hover:underline"
-        href="https://twitter.com/naval/status/1002104154737684480"
+        href="https://twitter.com/imanolrtega/status/1002104154737684480"
         target="_blank"
         rel="noopener noreferrer">
         {" "}
