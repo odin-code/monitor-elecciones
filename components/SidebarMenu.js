@@ -8,7 +8,7 @@ import {
 
 const SidebarMenu = () => {
   return (
-    <div className="w-2/12 flex flex-col items-center bg-black px-6 py-4 text-white">
+    <div className="w-2/12 flex flex-col items-center bg-gray-900 px-6 py-4 text-white">
       <div className="flex flex-col h-full justify-between">
         <Link href="/">
           <a className="text-3xl font-bold mt-16 tracking-tighter">
@@ -19,19 +19,19 @@ const SidebarMenu = () => {
           </a>
         </Link>
         <div className="flex flex-col items-start">
-          <Link href="/elecciones">
+          <Link href="/">
             <a className="flex items-center my-3 text-gray-200 hover:text-gray-200">
               <DesktopComputerIcon className="h-6 w-6 mr-2" />
               <span className="text-lg">Transmisiones</span>
             </a>
           </Link>
-          <Link href="/elecciones">
+          <Link href="/">
             <a className="flex items-center my-3 text-gray-400 hover:text-gray-200">
               <ChartBarIcon className="h-6 w-6 mr-2 " />
               <span className="text-lg ">Estadísticas</span>
             </a>
           </Link>
-          <Link href="/elecciones">
+          <Link href="/">
             <a className="flex items-center my-3 text-gray-400 hover:text-gray-200">
               <NewspaperIcon className="h-6 w-6 mr-2 hover:text-gray-200" />
               <span className="text-gray-400 text-lg hover:text-gray-200">

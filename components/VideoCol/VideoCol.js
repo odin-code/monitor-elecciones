@@ -1,4 +1,5 @@
 import React from "react";
+import VideoButton from "./VideoButton";
 import YouTubeEmbed from "./YouTubeEmbed";
 
 const VideoCol = () => {
@@ -12,19 +13,11 @@ const VideoCol = () => {
           </strong>
         </h3>
       </div>
-      <div className="w-full pb-2 space-x-1">
-        <button class="h-10 px-5 font-semibold text-blue-400 transition-colors duration-150 border border-blue-400 rounded focus:shadow-outline bg-gradient-to-r hover:from-blue-500 hover:to-teal-400 hover:text-indigo-100">
-          TN
-        </button>
-        <button class="h-10 px-5 font-semibold text-blue-400 transition-colors duration-150 border border-blue-400 rounded focus:shadow-outline bg-gradient-to-r hover:from-blue-500 hover:to-teal-400 hover:text-indigo-100">
-          La Nación +
-        </button>
-        <button class="h-10 px-5 font-semibold text-blue-400 transition-colors duration-150 border border-blue-400 rounded focus:shadow-outline bg-gradient-to-r hover:from-blue-500 hover:to-teal-400 hover:text-indigo-100">
-          C5N
-        </button>
-        <button class="h-10 px-5 font-semibold text-blue-400 transition-colors duration-150 border border-blue-400 rounded focus:shadow-outline bg-gradient-to-r hover:from-blue-500 hover:to-teal-400 hover:text-indigo-100">
-          Crónica TV
-        </button>
+      <div className="w-full pb-2 space-x-2 mb-2">
+        <VideoButton text="TN" active/>
+        <VideoButton text="C5N" />
+        <VideoButton text="La Nación +" />
+        <VideoButton text="Crónica TV" />
       </div>
       <div className="w-full h-3/3 mb-4">
         <YouTubeEmbed embedId="wHn1_QVoXGM" height="480" />
