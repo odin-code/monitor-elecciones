@@ -2,7 +2,7 @@ import React from "react";
 
 const VideoButton = ({ text, active }) => {
   return (
-    <span className="relative inline-flex rounded-md shadow-sm">
+    <div className="relative inline-flex rounded-md shadow-sm">
       <button
         type="button"
         className={
@@ -22,7 +22,7 @@ const VideoButton = ({ text, active }) => {
       ) : (
         ""
       )}
-    </span>
+    </div>
   );
 };
 
