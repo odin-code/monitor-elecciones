@@ -6,12 +6,12 @@ export const channels = [
   },
   {
     name: "La Nación +",
-    embedId: "ns8-5XKA0Ww",
+    embedId: "5ql5hNZQzKc",
     key: 1
   },
   {
     name: "C5N",
-    embedId: "h0t2XAwr0ks",
+    embedId: "3nBq86rurVg",
     key: 2
   },
   {
