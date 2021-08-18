@@ -61,12 +61,12 @@ const VideoCol = () => {
       </div>
 
       <div className="w-full h-3/3 mb-4">
-        {/*<YouTubeEmbed embedId={activeChannel.embedId} height="480" /> */}
-        <YouTubeEmbedWithAPI
+        <YouTubeEmbed embedId={activeChannel.embedId} height="480" mute={"0"} />
+        {/*<YouTubeEmbedWithAPI
           height="480"
           width="100%"
           embedId={activeChannel.embedId}
-        />
+        /> */}
       </div>
 
       <div className="grid grid-rows-1 grid-flow-col gap-4 mb-4">
@@ -78,7 +78,7 @@ const VideoCol = () => {
               embedId={channel.embedId}
               height="200"
               key={channel.key}
-              autoplay
+              mute={"1"}
             />
           )
         )}
