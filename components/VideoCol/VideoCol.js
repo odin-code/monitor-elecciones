@@ -102,7 +102,7 @@ const VideoCol = () => {
               embedId={channel.embedId}
               height="200"
               key={channel.key}
-              mute="0"
+              mute="1"
               autoplay={autoplaySecondary}
             />
           )
