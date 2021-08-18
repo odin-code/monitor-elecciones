@@ -29,8 +29,8 @@ const VideoCol = () => {
 
   return (
     <div className="w-7/12 bg-gray-50 dark:bg-gray-900 flex flex-col overflow-auto min-h-full p-6 border-r border-r-gray-300 dark:border-none">
-      <div className="mb-4">
-        <h3 className="text-2xl font-medium text-gray-800 dark:text-white">
+      <div className="mt-2 mb-6">
+        <h3 className="text-3xl font-medium text-gray-800 dark:text-white">
           Transmisiones en{" "}
           <strong className="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
             Vivo

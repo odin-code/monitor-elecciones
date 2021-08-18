@@ -82,15 +82,22 @@ const SidebarMenu = () => {
           </div>
           <p className="text-gray-400 pt-2 text-sm text-center">
             © 2021. Por{" "}
-            <a className="text-gray-300" href="https://github.com/julianmnst">
+            <a
+              target="_blank"
+              className="text-gray-300"
+              href="https://github.com/julianmnst">
               Julián
             </a>{" "}
             e{" "}
-            <a className="text-gray-300" href="https://github.com/imanolrtega">
+            <a
+              target="_blank"
+              className="text-gray-300"
+              href="https://github.com/imanolrtega">
               Imanol
             </a>
             .{" "}
             <a
+              target="_blank"
               className="text-gray-300"
               href="https://github.com/imanolrtega/monitor-elecciones">
               Ver Código
