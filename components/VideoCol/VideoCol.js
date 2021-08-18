@@ -29,8 +29,8 @@ const VideoCol = () => {
 
   return (
     <div className="w-7/12 bg-gray-50 dark:bg-gray-900 flex flex-col overflow-auto min-h-full p-6 border-r border-r-gray-300 dark:border-none">
-      <div className="mb-4">
-        <h3 className="text-2xl font-medium text-gray-800 dark:text-white">
+      <div className="mt-3 mb-6">
+        <h3 className="text-3xl font-medium text-gray-800 dark:text-white">
           Transmisiones en{" "}
           <strong className="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
             Vivo
@@ -74,7 +74,7 @@ const VideoCol = () => {
             type="button"
             className={
               autoplaySecondary === "0"
-                ? "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded bg-teal-100 dark:bg-gray-800 text-teal-500 transition-colors duration-200 bg-gradient-to-r hover:from-teal-500 hover:to-blue-400 hover:text-white ease-in-out"
+                ? "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded bg-teal-100 dark:bg-gray-800 text-teal-500 transition-colors duration-200 bg-gradient-to-r hover:from-teal-500 hover:to-teal-400 hover:text-white ease-in-out"
                 : "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded bg-red-100 dark:bg-gray-800 text-red-500 transition-colors duration-200 bg-gradient-to-r hover:from-red-500 hover:to-red-400 hover:text-white ease-in-out"
             }>
             {autoplaySecondary === "0"

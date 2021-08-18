@@ -16,7 +16,7 @@ export const channels = [
   },
   {
     name: "Crónica TV",
-    embedId: "MMzAVO7WTcg",
+    embedId: "p01gEVCV9_w",
     key: 3
   },
 ];
