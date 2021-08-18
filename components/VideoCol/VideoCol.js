@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import YouTubeEmbed from "./YouTubeEmbed";
 import { channels } from "./../../constants/constants";
-import YouTubeEmbedWithAPI from "./YouTubeEmbedWithAPI";
 
 const VideoCol = () => {
   const arrayChannels = channels;
@@ -21,9 +20,9 @@ const VideoCol = () => {
   }, []);
 
   return (
-    <div className="w-7/12 bg-gray-100 flex flex-col overflow-auto min-h-full p-6 border-r border-gray-300">
+    <div className="w-7/12 bg-gray-100 dark:bg-gray-900 flex flex-col overflow-auto min-h-full p-6 border-r border-r-gray-300 dark:border-none">
       <div className="mb-4">
-        <h3 className="text-2xl font-medium">
+        <h3 className="text-2xl font-medium text-gray-800 dark:text-white">
           Transmisiones en{" "}
           <strong className="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
             Vivo
@@ -38,7 +37,7 @@ const VideoCol = () => {
               className={
                 channel.name === activeChannel.name
                   ? "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded transition-colors duration-200 bg-gradient-to-r from-blue-500 to-teal-400 text-indigo-50 ease-in-out"
-                  : "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded bg-blue-100 text-blue-400 transition-colors duration-200 bg-gradient-to-r hover:from-blue-500 hover:to-teal-400 hover:text-indigo-50 ease-in-out"
+                  : "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded bg-blue-100 dark:bg-gray-800 text-blue-400 transition-colors duration-200 bg-gradient-to-r hover:from-blue-500 hover:to-teal-400 hover:text-indigo-50 ease-in-out"
               }
               key={channel.key}
               active={channel.name === activeChannel.name ? true : false}
@@ -61,12 +60,14 @@ const VideoCol = () => {
       </div>
 
       <div className="w-full h-3/3 mb-4">
-        <YouTubeEmbed embedId={activeChannel.embedId} height="480" mute={"0"} />
-        {/*<YouTubeEmbedWithAPI
+        <YouTubeEmbed embedId={activeChannel.embedId} height="480" mute="0" />
+        {/*
+        <YouTubeEmbedWithAPI
           height="480"
           width="100%"
           embedId={activeChannel.embedId}
-        /> */}
+        /> 
+        */}
       </div>
 
       <div className="grid grid-rows-1 grid-flow-col gap-4 mb-4">
@@ -78,7 +79,7 @@ const VideoCol = () => {
               embedId={channel.embedId}
               height="200"
               key={channel.key}
-              mute={"1"}
+              mute="1"
             />
           )
         )}

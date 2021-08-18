@@ -2,7 +2,7 @@ import React from "react";
 
 const TweetEmbed = () => {
   return (
-    <div className="rounded border border-gray-300 px-6 py-4 mt-4 w-full bg-gray-50">
+    <div className="rounded border border-gray-300 dark:border-gray-900 px-6 py-4 mt-4 w-full bg-gray-50 dark:bg-gray-800">
       <div className="flex items-center">
         <a
           className="flex h-12 w-12"
@@ -22,7 +22,7 @@ const TweetEmbed = () => {
           rel="noopener noreferrer"
           className="flex flex-col ml-4">
           <span
-            className="flex items-center font-bold text-gray-900 leading-5"
+            className="flex items-center font-bold text-gray-900 dark:text-white leading-5"
             title="{author.name}">
             Tino Birra
             <svg
@@ -34,7 +34,7 @@ const TweetEmbed = () => {
               </g>
             </svg>
           </span>
-          <span className="text-gray-500" title="{`@naval`}">
+          <span className="text-gray-500 dark:text-gray-300" title="{`@naval`}">
             {" "}
             @tinobirra{" "}
           </span>
@@ -56,11 +56,11 @@ const TweetEmbed = () => {
           </svg>
         </a>
       </div>
-      <div className="mt-4 mb-2 leading-normal whitespace-pre-wrap text-lg text-gray-700">
+      <div className="mt-4 mb-2 leading-normal whitespace-pre-wrap text-lg text-gray-700 dark:text-gray-200">
         Familia hoy se vota.
       </div>
       <a
-        className="text-gray-500 text-sm hover:underline"
+        className="text-gray-500 dark:text-gray-400 text-sm hover:underline"
         href="https://twitter.com/imanolrtega/status/1002104154737684480"
         target="_blank"
         rel="noopener noreferrer">
@@ -69,7 +69,7 @@ const TweetEmbed = () => {
       </a>
       <div className="flex text-gray-700 mt-2">
         <a
-          className="flex items-center mr-4 text-gray-500 hover:text-blue-600 transition hover:underline"
+          className="flex items-center mr-4 text-gray-500 dark:text-gray-400 dark:hover:text-blue-500 hover:text-blue-500 transition hover:underline"
           href="#"
           target="_blank"
           rel="noopener noreferrer">
@@ -82,7 +82,7 @@ const TweetEmbed = () => {
           <span>117</span>
         </a>
         <a
-          className="flex items-center mr-4 text-gray-500 hover:text-green-600 transition hover:underline"
+          className="flex items-center mr-4 text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-500 transition hover:underline"
           href="#"
           target="_blank"
           rel="noopener noreferrer">
@@ -95,7 +95,7 @@ const TweetEmbed = () => {
           <span>5,434</span>
         </a>
         <a
-          className="flex items-center text-gray-500 hover:text-red-600 transition hover:underline"
+          className="flex items-center text-gray-500 dark:text-gray-400 dark:hover:text-red-600 hover:text-red-500 transition hover:underline"
           href="#"
           target="_blank"
           rel="noopener noreferrer">

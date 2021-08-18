@@ -1,7 +1,7 @@
 module.exports = {
   mode: "jit",
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
@@ -15,6 +15,10 @@ module.exports = {
           700: "#0064DA",
           800: "#0059C2",
           900: "#004391",
+        },
+        gray: {
+          850: "#161F33",
+          1000: "#0B1012",
         },
         teal: {
           100: "#E6FFFA",
@@ -38,11 +42,11 @@ module.exports = {
           200: "#8A63D2",
           300: "#7928CA",
           400: "#4C2889",
-        }
+        },
       },
       fontSize: {
-        'xxl': '1.38rem',
-       }
+        xxl: "1.38rem",
+      },
     },
   },
   variants: {
