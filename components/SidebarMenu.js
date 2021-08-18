@@ -73,14 +73,13 @@ const SidebarMenu = () => {
               </span>
             </a>
           </Link>
+        </div>
+        <div className="divide-y divide-gray-400">
           <div>
             <a className="flex items-center my-3 text-gray-400 hover:text-gray-200">
               {renderThemeChanger()}
             </a>
           </div>
-        </div>
-        <div className="divide-y divide-gray-400">
-          <div></div>
           <p className="text-gray-400 pt-2 text-sm text-center">
             © 2021. Por{" "}
             <a className="text-gray-300" href="https://github.com/julianmnst">
