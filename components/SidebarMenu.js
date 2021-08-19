@@ -25,7 +25,7 @@ const SidebarMenu = () => {
     if (currentTheme === "dark") {
       return (
         <SunIcon
-          className="h-6 w-6 mr-2 hover:text-gray-200"
+          className="animate-pulse h-6 w-6 mr-2 hover:text-gray-200"
           role="button"
           onClick={() => setTheme("light")}
         />
@@ -33,7 +33,7 @@ const SidebarMenu = () => {
     } else {
       return (
         <MoonIcon
-          className="h-6 w-6 mr-2 hover:text-gray-200"
+          className="animate-pulse h-6 w-6 mr-2 hover:text-gray-200"
           role="button"
           onClick={() => setTheme("dark")}
         />

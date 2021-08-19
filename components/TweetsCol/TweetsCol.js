@@ -3,7 +3,7 @@ import TweetEmbed from "./TweetEmbed";
 
 const TweetsCol = () => {
   return (
-    <div className="w-3/12 bg-gray-200 dark:bg-gray-850 flex flex-col p-6 overflow-auto">
+    <div className="w-3/12 bg-gray-200 dark:bg-gray-850 flex flex-col p-6 no-scrollbar overflow-auto">
       <div className="mt-3">
         <h4 className="text-xxl font-medium text-gray-800 dark:text-white">
           Últimos{" "}

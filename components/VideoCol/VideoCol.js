@@ -28,7 +28,7 @@ const VideoCol = () => {
   }, []);
 
   return (
-    <div className="w-7/12 bg-gray-50 dark:bg-gray-900 flex flex-col overflow-auto min-h-full p-6 border-r border-r-gray-300 dark:border-none">
+    <div className="w-7/12 bg-gray-50 dark:bg-gray-900 flex flex-col no-scrollbar overflow-auto min-h-full p-6 border-r border-r-gray-300 dark:border-none">
       <div className="mt-3 mb-6">
         <h3 className="text-3xl font-medium text-gray-800 dark:text-white">
           Transmisiones en{" "}
@@ -46,8 +46,8 @@ const VideoCol = () => {
                 type="button"
                 className={
                   channel.name === activeChannel.name
-                    ? "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded transition-colors duration-200 bg-gradient-to-r from-blue-500 to-teal-400 text-white ease-in-out"
-                    : "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded bg-blue-100 dark:bg-gray-800 text-blue-400 transition-colors duration-200 bg-gradient-to-r hover:from-blue-500 hover:to-teal-400 hover:text-white ease-in-out"
+                    ? "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded transition-colors duration-500 bg-gradient-to-r from-blue-500 to-teal-400 text-white ease-in-out"
+                    : "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded bg-blue-100 dark:bg-gray-800 text-blue-400 transition-colors duration-500 bg-gradient-to-r hover:from-blue-500 hover:to-teal-400 hover:text-white ease-in-out"
                 }
                 key={channel.key}
                 active={channel.name === activeChannel.name ? true : false}
