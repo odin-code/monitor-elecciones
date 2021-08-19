@@ -74,7 +74,7 @@ const VideoCol = () => {
             type="button"
             className={
               autoplaySecondary === "0"
-                ? "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded bg-teal-100 dark:bg-gray-800 text-teal-500 transition-colors duration-200 bg-gradient-to-r hover:from-teal-500 hover:to-teal-400 hover:text-white ease-in-out"
+                ? "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded bg-purple-100 dark:bg-gray-800 text-purple-400 transition-colors duration-200 bg-gradient-to-r hover:from-purple-500 hover:to-purple-400 hover:text-white ease-in-out"
                 : "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded bg-red-100 dark:bg-gray-800 text-red-500 transition-colors duration-200 bg-gradient-to-r hover:from-red-500 hover:to-red-400 hover:text-white ease-in-out"
             }>
             {autoplaySecondary === "0"
