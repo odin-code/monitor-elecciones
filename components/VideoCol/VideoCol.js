@@ -11,7 +11,6 @@ const VideoCol = () => {
     arrayChannels.forEach((element) => {
       if (element.embedId === embedId) {
         setActiveChannel(element);
-        //setAutoplaySecondary("0");
       }
     });
   };
@@ -22,10 +21,22 @@ const VideoCol = () => {
       : setAutoplaySecondary("0");
   };
 
+  //algorithm Fisher-Yates shuffle
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
   useEffect(() => {
     let active = channels[Math.floor(Math.random() * channels.length)];
     setActiveChannel(active);
   }, []);
+
+  useEffect(() => {
+    shuffle(arrayChannels);
+  }, [arrayChannels]);
 
   return (
     <div className="w-7/12 bg-gray-50 dark:bg-gray-900 flex flex-col no-scrollbar overflow-auto min-h-full p-6 border-r border-r-gray-300 dark:border-none">
