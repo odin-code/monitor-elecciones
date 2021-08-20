@@ -17,7 +17,7 @@ const TweetEmbed = ({ tweet, users }) => {
   }, [users]);
 
   return (
-    <div className="rounded border border-gray-300 dark:border-gray-900 px-6 py-4 mt-4 w-full bg-gray-50 dark:bg-gray-800">
+    <div className="rounded border border-gray-300 dark:border-none px-6 py-4 mt-4 w-full bg-gray-50 dark:bg-gray-800">
       {user ? (
         <div>
           <div className="flex items-center">

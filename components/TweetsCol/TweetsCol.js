@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TweetEmbed from "./TweetEmbed";
 import TweetPulse from "./TweetPulse";
-import * as data from "../../constants/tweets.json";
 
 const TweetsCol = () => {
   const [dataTweets, setDataTweets] = useState();
