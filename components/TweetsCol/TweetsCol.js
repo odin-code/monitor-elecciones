@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import TweetEmbed from "./TweetEmbed";
+import TweetPulse from "./TweetPulse";
 import * as data from "../../constants/tweets.json";
 
 const TweetsCol = () => {
-  const [dataTweets, setDataTweets] = useState(data);
-  const [tweets, setTweets] = useState(data.includes.tweets);
-  const [users, setUsers] = useState(data.includes.users);
+  const [dataTweets, setDataTweets] = useState();
+  const [tweets, setTweets] = useState();
+  const [users, setUsers] = useState();
 
   useEffect(() => {
     const getData = async () => {
@@ -20,9 +21,6 @@ const TweetsCol = () => {
       );
     };
     getData();
-    //console.log(dataTweets);
-    //console.log(tweets);
-    //console.log(users);
   }, []);
 
   return (
@@ -35,11 +33,20 @@ const TweetsCol = () => {
           </strong>
         </h4>
       </div>
-      <div className="flex flex-col space-y-6">
-        {tweets?.map((tweet) => (
-          <TweetEmbed key={tweet.id} tweet={tweet} users={users} />
-        ))}
-      </div>
+      {tweets ? (
+        <div className="flex flex-col space-y-6">
+          {tweets?.map((tweet) => (
+            <TweetEmbed key={tweet.id} tweet={tweet} users={users} />
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col space-y-6">
+          <TweetPulse />
+          <TweetPulse />
+          <TweetPulse />
+          <TweetPulse />
+        </div>
+      )}
     </div>
   );
 };

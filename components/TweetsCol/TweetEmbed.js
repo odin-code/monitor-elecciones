@@ -13,9 +13,7 @@ const TweetEmbed = ({ tweet, users }) => {
         }
       });
     };
-
-    getUser(tweet.author_id);
-    console.log(user);
+    users ? getUser(tweet.author_id) : "";
   }, [users]);
 
   return (
