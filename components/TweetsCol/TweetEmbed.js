@@ -1,27 +1,77 @@
 import React, { useState, useEffect } from "react";
 import { format } from "date-fns";
+import Image from "next/image";
 
-const TweetEmbed = ({ tweet, users }) => {
-  const tweetDate = new Date(tweet.created_at);
+const TweetEmbed = ({ tweet, users, medias }) => {
   const [user, setUser] = useState();
+  const [tweetDate, setTweetDate] = useState();
+  const [formattedText, setFormattedText] = useState();
 
-  useEffect(() => {
-    const getUser = (id) => {
-      users.forEach((user) => {
-        if (user.id === id) {
-          setUser(user);
+  const [quoteTweet, setQuoteTweet] = useState();
+  const [retweet, setRetweet] = useState();
+
+  const [mediaData, setMediaData] = useState();
+  const [mediaID, setMediaID] = useState();
+
+  const getUser = (id) => {
+    users.forEach((user) => {
+      if (user.id === id) {
+        setUser(user);
+      }
+    });
+  };
+
+  const getMedia = (mediaID) => {
+    let arrayMedia = [];
+    medias.forEach((m) => {
+      mediaID.forEach((id) => {
+        if (m.media_key === id) {
+          arrayMedia.push(m);
         }
       });
-    };
+    });
+    if (arrayMedia.length > 0) {
+      setMediaData(arrayMedia);
+    }
+  };
+
+  useEffect(() => {
+    if (tweet) {
+      setTweetDate(new Date(tweet.created_at));
+      setFormattedText(tweet.text.replace(/https:\/\/[\n\S]+/g, ""));
+      setQuoteTweet(
+        tweet.referenced_tweets &&
+          tweet.referenced_tweets.find((t) => t.type === "quoted")
+      );
+      setRetweet(
+        tweet.referenced_tweets &&
+          tweet.referenced_tweets.find((t) => t.type === "retweeted")
+      );
+      setMediaID(tweet.attachments ? tweet.attachments.media_keys : null);
+    }
+  }, [tweet]);
+
+  useEffect(() => {
     users ? getUser(tweet.author_id) : "";
   }, [users]);
+
+  useEffect(() => {
+    if (medias && mediaID) {
+      getMedia(mediaID);
+    }
+  }, [medias]);
 
   return (
     <div className="rounded border border-gray-300 dark:border-none px-6 py-4 mt-4 w-full bg-gray-50 dark:bg-gray-800">
       {user ? (
-        <div>
+        <a
+          title="Ver Tweet"
+          href={`https://twitter.com/${user.username}/status/${tweet.id}`}
+          target="_blank"
+          rel="noopener noreferrer">
           <div className="flex items-center">
             <a
+              title="Ver perfil"
               className="flex h-12 w-12"
               href={`https://twitter.com/${user.username}`}
               target="_blank"
@@ -40,7 +90,7 @@ const TweetEmbed = ({ tweet, users }) => {
               className="flex flex-col ml-4">
               <span
                 className="flex items-center font-bold text-gray-900 dark:text-white leading-5"
-                title="">
+                title="Ver perfil">
                 {user.name}
                 {user.verified ? (
                   <svg
@@ -55,14 +105,14 @@ const TweetEmbed = ({ tweet, users }) => {
               </span>
               <span
                 className="text-gray-500 dark:text-gray-300"
-                title="{`@naval`}">
+                title="Ver perfil">
                 {" "}
                 @{user.username}{" "}
               </span>
             </a>
             <a
               className="ml-auto"
-              href={`https://twitter.com/${user.username}`}
+              href={`https://twitter.com/${user.username}/status/${tweet.id}`}
               target="_blank"
               rel="noopener noreferrer">
               <svg
@@ -78,21 +128,46 @@ const TweetEmbed = ({ tweet, users }) => {
             </a>
           </div>
           <div className="mt-4 mb-2 leading-normal whitespace-pre-wrap text-lg text-gray-700 dark:text-gray-200">
-            {tweet.text}
+            {formattedText}
           </div>
+          {mediaData && mediaData.length ? (
+            <div
+              className={
+                mediaData.length === 1
+                  ? "inline-grid grid-cols-1 gap-x-2 gap-y-2 my-2"
+                  : "inline-grid grid-cols-2 gap-x-2 gap-y-2 my-2"
+              }>
+              {mediaData.map((m) => (
+                <Image
+                  key={m.media_key}
+                  alt={formattedText}
+                  height={m.height}
+                  width={m.width}
+                  src={
+                    m.url
+                      ? m.url
+                      : "https://pbs.twimg.com/media/E9Qxl35XMAIlOES?format=png&name=900x900"
+                  }
+                  className="rounded"
+                />
+              ))}
+            </div>
+          ) : null}
+          {quoteTweet ? <TweetEmbed {...quoteTweet} /> : null}
           <a
             className="text-gray-500 dark:text-gray-400 text-sm hover:underline"
             href={`https://twitter.com/${user.username}/status/${tweet.id}`}
             target="_blank"
             rel="noopener noreferrer">
             <time
-              title={`Time Posted: ${tweetDate.toUTCString()}`}
+              title={`Publicado el ${format(tweetDate, "d MMM, y - h:mm a")}`}
               dateTime={tweetDate.toISOString()}>
               {format(tweetDate, "h:mm a - MMM d, y")}
             </time>
           </a>
           <div className="flex text-gray-700 mt-2">
             <a
+              title="Comentar"
               className="flex items-center mr-4 text-gray-500 dark:text-gray-400 dark:hover:text-blue-500 hover:text-blue-500 transition hover:underline"
               href={`https://twitter.com/intent/tweet?in_reply_to=${tweet.id}`}
               target="_blank"
@@ -106,6 +181,7 @@ const TweetEmbed = ({ tweet, users }) => {
               <span>{tweet.public_metrics.reply_count}</span>
             </a>
             <a
+              title="Retweetear"
               className="flex items-center mr-4 text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-500 transition hover:underline"
               href={`https://twitter.com/intent/retweet?tweet_id=${tweet.id}`}
               target="_blank"
@@ -119,6 +195,7 @@ const TweetEmbed = ({ tweet, users }) => {
               <span>{tweet.public_metrics.retweet_count}</span>
             </a>
             <a
+              title="Dar like"
               className="flex items-center text-gray-500 dark:text-gray-400 dark:hover:text-red-600 hover:text-red-500 transition hover:underline"
               href={`https://twitter.com/intent/like?tweet_id=${tweet.id}`}
               target="_blank"
@@ -132,7 +209,7 @@ const TweetEmbed = ({ tweet, users }) => {
               <span>{tweet.public_metrics.like_count}</span>
             </a>
           </div>
-        </div>
+        </a>
       ) : (
         ""
       )}
