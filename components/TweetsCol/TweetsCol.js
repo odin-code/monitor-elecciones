@@ -14,7 +14,6 @@ const TweetsCol = () => {
         "https://argentina-2021.herokuapp.com/tweets?ht=carpincho"
       ).then((response) =>
         response.json().then((data) => {
-          console.log(data);
           setDataTweets(data.data);
           setQuotedTweets(data.includes.tweets);
           setUsers(data.includes.users);
@@ -49,6 +48,7 @@ const TweetsCol = () => {
         </div>
       ) : (
         <div className="flex flex-col space-y-6">
+          <TweetPulse />
           <TweetPulse />
           <TweetPulse />
           <TweetPulse />

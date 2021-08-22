@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-const QuotedTweet = ({ quotedTweetData, medias, users }) => {
-  console.log(medias);
+const QuotedTweet = ({ quotedTweetData, users }) => {
   const [user, setUser] = useState();
-  const [mediaID, setMediaID] = useState();
-  const [mediaData, setMediaData] = useState();
 
   const getUser = (id) => {
     users.forEach((user) => {
@@ -13,16 +10,6 @@ const QuotedTweet = ({ quotedTweetData, medias, users }) => {
       }
     });
   };
-
-  useEffect(() => {
-    if (quotedTweetData) {
-      setMediaID(
-        quotedTweetData.attachments
-          ? quotedTweetData.attachments.media_keys
-          : null
-      );
-    }
-  }, [quotedTweetData]);
 
   useEffect(() => {
     users && getUser(quotedTweetData.author_id);
@@ -81,29 +68,6 @@ const QuotedTweet = ({ quotedTweetData, medias, users }) => {
           <div className="mt-4 leading-normal whitespace-pre-wrap text-base text-gray-700 dark:text-gray-200">
             {quotedTweetData.text}
           </div>
-          {mediaData && mediaData.length ? (
-            <div
-              className={
-                mediaData.length === 1
-                  ? "inline-grid grid-cols-1 gap-x-2 gap-y-2 my-2"
-                  : "inline-grid grid-cols-2 gap-x-2 gap-y-2 my-2"
-              }>
-              {mediaData.map((m) => (
-                <Image
-                  key={m.media_key}
-                  alt={formattedText}
-                  height={m.height}
-                  width={m.width}
-                  src={
-                    m.url
-                      ? m.url
-                      : "https://pbs.twimg.com/media/E9Qxl35XMAIlOES?format=png&name=900x900"
-                  }
-                  className="rounded"
-                />
-              ))}
-            </div>
-          ) : null}
         </a>
       ) : (
         ""

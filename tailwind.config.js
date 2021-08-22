@@ -4,7 +4,13 @@ module.exports = {
   darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {
+      spacing: {
+        0.5: "0.12rem",
+      },
       colors: {
+        twitter: {
+          500: "#3BA9EE",
+        },
         blue: {
           100: "#E6F0FD",
           200: "#CCE2FC",

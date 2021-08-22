@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { format } from "date-fns";
 import Image from "next/image";
 import QuotedTweet from "./QuotedTweet";
+import RepliedTo from "./RepliedTo";
 
 const TweetEmbed = ({ tweet, users, medias, quotedTweets }) => {
   const [user, setUser] = useState();
@@ -13,7 +14,9 @@ const TweetEmbed = ({ tweet, users, medias, quotedTweets }) => {
   const [quotedTweet, setQuotedTweet] = useState();
   const [quotedTweetData, setQuotedTweetData] = useState();
 
-  //const [retweet, setRetweet] = useState();
+  const [repliedTo, setRepliedTo] = useState();
+  const [repliedToData, setRepliedToData] = useState();
+  const [userReplied, setUserReplied] = useState();
 
   const getUser = (id) => {
     users.forEach((user) => {
@@ -45,18 +48,34 @@ const TweetEmbed = ({ tweet, users, medias, quotedTweets }) => {
     });
   };
 
+  const setReplied = (id) => {
+    quotedTweets.forEach((q) => {
+      if (q.id === id) {
+        setRepliedToData(q);
+      }
+    });
+  };
+
+  const getUserReplied = (id) => {
+    users.forEach((user) => {
+      if (user.id === id) {
+        setUserReplied(user);
+      }
+    });
+  };
+
   useEffect(() => {
     if (tweet) {
       setTweetDate(new Date(tweet.created_at));
-      setFormattedText(tweet.text.replace(/https:\/\/[\n\S]+/g, ""));
+      setFormattedText(tweet.text.replace(/https:\/\/[\n\S]+/g, "")); //delete media links
       setQuotedTweet(
         tweet.referenced_tweets &&
           tweet.referenced_tweets.find((t) => t.type === "quoted")
       );
-      /*setRetweet(
+      setRepliedTo(
         tweet.referenced_tweets &&
-          tweet.referenced_tweets.find((t) => t.type === "retweeted")
-      );*/
+          tweet.referenced_tweets.find((t) => t.type === "replied_to")
+      );
       setMediaID(tweet.attachments ? tweet.attachments.media_keys : null);
     }
   }, [tweet]);
@@ -73,6 +92,14 @@ const TweetEmbed = ({ tweet, users, medias, quotedTweets }) => {
     quotedTweet && setQuote(quotedTweet.id);
   }, [quotedTweet]);
 
+  useEffect(() => {
+    repliedTo && setReplied(repliedTo.id);
+  }, [repliedTo]);
+
+  useEffect(() => {
+    users && repliedToData && getUserReplied(repliedToData.author_id);
+  }, [repliedToData]);
+
   return (
     <div className="rounded border border-gray-300 dark:border-none px-6 py-4 mt-4 w-full bg-gray-50 dark:bg-gray-800">
       {user ? (
@@ -81,6 +108,9 @@ const TweetEmbed = ({ tweet, users, medias, quotedTweets }) => {
           href={`https://twitter.com/${user.username}/status/${tweet.id}`}
           target="_blank"
           rel="noopener noreferrer">
+          {repliedTo ? (
+            <RepliedTo repliedToData={repliedToData} users={users} />
+          ) : null}
           <div className="flex items-center">
             <a
               title="Ver perfil"
@@ -139,7 +169,22 @@ const TweetEmbed = ({ tweet, users, medias, quotedTweets }) => {
               </svg>
             </a>
           </div>
-          <div className="mt-4 mb-2 leading-normal whitespace-pre-wrap text-lg text-gray-700 dark:text-gray-200">
+          <div className="mt-2">
+            {repliedToData && (
+              <span className="text-sm text-gray-500 dark:text-gray-400">
+                En respuesta a
+                {userReplied && (
+                  <span
+                    className="text-twitter-500 font-medium"
+                    title="Ver perfil">
+                    {" "}
+                    @{userReplied.username}{" "}
+                  </span>
+                )}
+              </span>
+            )}
+          </div>
+          <div className="mt-2 mb-2 leading-normal whitespace-pre-wrap text-lg text-gray-700 dark:text-gray-200">
             {formattedText}
           </div>
           {mediaData && mediaData.length ? (
@@ -166,11 +211,7 @@ const TweetEmbed = ({ tweet, users, medias, quotedTweets }) => {
             </div>
           ) : null}
           {quotedTweet ? (
-            <QuotedTweet
-              quotedTweetData={quotedTweetData}
-              medias={medias}
-              users={users}
-            />
+            <QuotedTweet quotedTweetData={quotedTweetData} users={users} />
           ) : null}
           <a
             className="text-gray-500 dark:text-gray-400 text-sm hover:underline"
