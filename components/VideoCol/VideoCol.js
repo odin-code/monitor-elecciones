@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import YouTubeEmbed from "./YouTubeEmbed";
 import { channels } from "./../../constants/constants";
+import Banner from "../Banner";
+import CountDown from "../CountDown";
 
 const VideoCol = () => {
   const arrayChannels = channels;
@@ -40,7 +42,19 @@ const VideoCol = () => {
 
   return (
     <div className="w-7/12 bg-gray-50 dark:bg-gray-900 flex flex-col no-scrollbar overflow-auto min-h-full p-6 border-r border-r-gray-300 dark:border-none">
-      <div className="mt-3 mb-6">
+      <Banner
+        text={
+          <CountDown
+            text="Elecciones PASO 2021: "
+            textIf="Las Elecciones PASO 2021 se llevan a cabo el día de hoy, no te olvides
+          de votar"
+          />
+        }
+        textButton="Más información"
+        linkButton={"https://www.electoral.gob.ar/nuevo/index.php"}
+      />
+
+      <div className="mt-6 mb-6">
         <h3 className="text-3xl font-medium text-gray-800 dark:text-white">
           Transmisiones en{" "}
           <strong className="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
