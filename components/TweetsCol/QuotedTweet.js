@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const QuotedTweet = ({ quotedTweetData, medias, users }) => {
+  console.log(medias);
   const [user, setUser] = useState();
   const [mediaID, setMediaID] = useState();
   const [mediaData, setMediaData] = useState();
@@ -11,20 +12,6 @@ const QuotedTweet = ({ quotedTweetData, medias, users }) => {
         setUser(user);
       }
     });
-  };
-
-  const getMedia = (mediaID) => {
-    let arrayMedia = [];
-    medias.forEach((m) => {
-      mediaID.forEach((id) => {
-        if (m.media_key === id) {
-          arrayMedia.push(m);
-        }
-      });
-    });
-    if (arrayMedia.length > 0) {
-      setMediaData(arrayMedia);
-    }
   };
 
   useEffect(() => {
@@ -41,16 +28,11 @@ const QuotedTweet = ({ quotedTweetData, medias, users }) => {
     users && getUser(quotedTweetData.author_id);
   }, [users]);
 
-  useEffect(() => {
-    medias && mediaID && getMedia(mediaID);
-    //console.log(mediaData);
-  }, [medias]);
-
   return (
-    <div className="rounded border border-gray-300 dark:border-none px-6 py-4 mt-4 w-full bg-gray-50 dark:bg-gray-800">
+    <div className="rounded border border-gray-300 dark:border-gray-600 px-4 py-3 my-4 w-full bg-gray-50 dark:bg-gray-800">
       {user ? (
         <a
-          title="Ver Tweet"
+          title="Ver Tweet Citado"
           href={`https://twitter.com/${user.username}/status/${quotedTweetData.id}`}
           target="_blank"
           rel="noopener noreferrer">
@@ -96,7 +78,7 @@ const QuotedTweet = ({ quotedTweetData, medias, users }) => {
               </span>
             </a>
           </div>
-          <div className="mt-4 mb-2 leading-normal whitespace-pre-wrap text-base text-gray-700 dark:text-gray-200">
+          <div className="mt-4 leading-normal whitespace-pre-wrap text-base text-gray-700 dark:text-gray-200">
             {quotedTweetData.text}
           </div>
           {mediaData && mediaData.length ? (

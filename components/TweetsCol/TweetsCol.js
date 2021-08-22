@@ -14,6 +14,7 @@ const TweetsCol = () => {
         "https://argentina-2021.herokuapp.com/tweets?ht=carpincho"
       ).then((response) =>
         response.json().then((data) => {
+          console.log(data);
           setDataTweets(data.data);
           setQuotedTweets(data.includes.tweets);
           setUsers(data.includes.users);
