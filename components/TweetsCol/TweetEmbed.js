@@ -97,7 +97,7 @@ const TweetEmbed = ({ tweet, users, medias, quotedTweets }) => {
   }, [repliedTo]);
 
   useEffect(() => {
-    users && repliedToData && getUserReplied(repliedToData.author_id);
+    users && repliedToData.author_id && getUserReplied(repliedToData.author_id);
   }, [repliedToData]);
 
   return (
