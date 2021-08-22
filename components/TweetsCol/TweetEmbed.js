@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { format } from "date-fns";
 import Image from "next/image";
+import QuotedTweet from "./QuotedTweet";
 
-const TweetEmbed = ({ tweet, users, medias }) => {
+const TweetEmbed = ({ tweet, users, medias, quotedTweets }) => {
   const [user, setUser] = useState();
   const [tweetDate, setTweetDate] = useState();
   const [formattedText, setFormattedText] = useState();
-
-  const [quoteTweet, setQuoteTweet] = useState();
-  const [retweet, setRetweet] = useState();
-
-  const [mediaData, setMediaData] = useState();
   const [mediaID, setMediaID] = useState();
+  const [mediaData, setMediaData] = useState();
+
+  const [quotedTweet, setQuotedTweet] = useState();
+  const [quotedTweetData, setQuotedTweetData] = useState();
+
+  //const [retweet, setRetweet] = useState();
 
   const getUser = (id) => {
     users.forEach((user) => {
@@ -35,31 +37,41 @@ const TweetEmbed = ({ tweet, users, medias }) => {
     }
   };
 
+  const setQuote = (id) => {
+    quotedTweets.forEach((q) => {
+      if (q.id === id) {
+        setQuotedTweetData(q);
+      }
+    });
+  };
+
   useEffect(() => {
     if (tweet) {
       setTweetDate(new Date(tweet.created_at));
       setFormattedText(tweet.text.replace(/https:\/\/[\n\S]+/g, ""));
-      setQuoteTweet(
+      setQuotedTweet(
         tweet.referenced_tweets &&
           tweet.referenced_tweets.find((t) => t.type === "quoted")
       );
-      setRetweet(
+      /*setRetweet(
         tweet.referenced_tweets &&
           tweet.referenced_tweets.find((t) => t.type === "retweeted")
-      );
+      );*/
       setMediaID(tweet.attachments ? tweet.attachments.media_keys : null);
     }
   }, [tweet]);
 
   useEffect(() => {
-    users ? getUser(tweet.author_id) : "";
+    users && getUser(tweet.author_id);
   }, [users]);
 
   useEffect(() => {
-    if (medias && mediaID) {
-      getMedia(mediaID);
-    }
+    medias && mediaID && getMedia(mediaID);
   }, [medias]);
+
+  useEffect(() => {
+    quotedTweet && setQuote(quotedTweet.id);
+  }, [quotedTweet]);
 
   return (
     <div className="rounded border border-gray-300 dark:border-none px-6 py-4 mt-4 w-full bg-gray-50 dark:bg-gray-800">
@@ -87,7 +99,7 @@ const TweetEmbed = ({ tweet, users, medias }) => {
               className="author"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col ml-4">
+              className="flex flex-col ml-3">
               <span
                 className="flex items-center font-bold text-gray-900 dark:text-white leading-5"
                 title="Ver perfil">
@@ -153,7 +165,13 @@ const TweetEmbed = ({ tweet, users, medias }) => {
               ))}
             </div>
           ) : null}
-          {quoteTweet ? <TweetEmbed {...quoteTweet} /> : null}
+          {quotedTweet ? (
+            <QuotedTweet
+              quotedTweetData={quotedTweetData}
+              medias={medias}
+              users={users}
+            />
+          ) : null}
           <a
             className="text-gray-500 dark:text-gray-400 text-sm hover:underline"
             href={`https://twitter.com/${user.username}/status/${tweet.id}`}

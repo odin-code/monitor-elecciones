@@ -4,18 +4,18 @@ import TweetPulse from "./TweetPulse";
 
 const TweetsCol = () => {
   const [dataTweets, setDataTweets] = useState();
-  const [tweets, setTweets] = useState();
+  const [quotedTweets, setQuotedTweets] = useState();
   const [users, setUsers] = useState();
   const [medias, setMedias] = useState();
 
   useEffect(() => {
     const getData = async () => {
       await fetch(
-        "https://argentina-2021.herokuapp.com/tweets?ht=PASO2021"
+        "https://argentina-2021.herokuapp.com/tweets?ht=carpincho"
       ).then((response) =>
         response.json().then((data) => {
           setDataTweets(data.data);
-          setTweets(data.includes.tweets);
+          setQuotedTweets(data.includes.tweets);
           setUsers(data.includes.users);
           setMedias(data.includes.media);
         })
@@ -34,13 +34,13 @@ const TweetsCol = () => {
           </strong>
         </h4>
       </div>
-      {tweets ? (
+      {dataTweets ? (
         <div className="flex flex-col space-y-6">
           {dataTweets?.map((tweet) => (
             <TweetEmbed
               key={tweet.id}
               tweet={tweet}
-              tweets={tweets}
+              quotedTweets={quotedTweets}
               users={users}
               medias={medias}
             />
