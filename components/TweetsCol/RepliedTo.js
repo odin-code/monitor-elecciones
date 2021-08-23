@@ -12,8 +12,8 @@ const RepliedTo = ({ repliedToData, users }) => {
   };
 
   useEffect(() => {
-    users && getUser(repliedToData.author_id);
-  }, [users]);
+    users && repliedToData && repliedToData.author_id && getUser(repliedToData.author_id);
+  }, [users, repliedToData]);
 
   return (
     <div className="rounded w-full bg-gray-50 dark:bg-gray-800">

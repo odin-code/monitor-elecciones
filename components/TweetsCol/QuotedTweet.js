@@ -12,8 +12,8 @@ const QuotedTweet = ({ quotedTweetData, users }) => {
   };
 
   useEffect(() => {
-    users && getUser(quotedTweetData.author_id);
-  }, [users]);
+    users && quotedTweetData && quotedTweetData.author_id && getUser(quotedTweetData.author_id);
+  }, [users, quotedTweetData]);
 
   return (
     <div className="rounded border border-gray-300 dark:border-gray-600 px-4 py-3 my-4 w-full bg-gray-50 dark:bg-gray-800">

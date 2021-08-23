@@ -97,7 +97,7 @@ const TweetEmbed = ({ tweet, users, medias, quotedTweets }) => {
   }, [repliedTo]);
 
   useEffect(() => {
-    users && repliedToData.author_id && getUserReplied(repliedToData.author_id);
+    users && repliedToData && repliedToData.author_id && getUserReplied(repliedToData.author_id);
   }, [repliedToData]);
 
   return (
@@ -203,7 +203,7 @@ const TweetEmbed = ({ tweet, users, medias, quotedTweets }) => {
                   src={
                     m.url
                       ? m.url
-                      : "https://pbs.twimg.com/media/E9Qxl35XMAIlOES?format=png&name=900x900"
+                      : m.preview_image_url
                   }
                   className="rounded"
                 />
