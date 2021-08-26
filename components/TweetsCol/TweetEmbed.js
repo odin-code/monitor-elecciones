@@ -104,7 +104,7 @@ const TweetEmbed = ({ tweet, users, medias, quotedTweets }) => {
   }, [repliedToData]);
 
   return (
-    <div className="rounded border border-gray-300 dark:border-none px-6 py-4 mt-4 w-full bg-gray-50 dark:bg-gray-800">
+    <div className="rounded-md border border-gray-300 dark:border-none px-6 py-4 mt-4 w-full bg-gray-50 dark:bg-gray-800">
       {user ? (
         <a
           title="Ver Tweet"
@@ -204,7 +204,7 @@ const TweetEmbed = ({ tweet, users, medias, quotedTweets }) => {
                   height={m.height}
                   width={m.width}
                   src={m.url ? m.url : m.preview_image_url}
-                  className="rounded"
+                  className="rounded-md"
                 />
               ))}
             </div>

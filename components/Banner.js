@@ -6,11 +6,11 @@ const Banner = ({ text, textButton, linkButton }) => {
   return (
     <>
       {!close && (
-        <div className="bg-gradient-to-r from-indigo-400 to-indigo-300 rounded">
+        <div className="bg-gradient-to-r from-indigo-400 to-indigo-300 rounded-md">
           <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between flex-wrap">
               <div className="w-0 flex-1 flex items-center">
-                <span className="flex p-2 rounded bg-indigo-500">
+                <span className="flex p-2 rounded-md bg-indigo-500">
                   <SpeakerphoneIcon
                     className="h-6 w-6 text-white"
                     aria-hidden="true"
@@ -25,7 +25,7 @@ const Banner = ({ text, textButton, linkButton }) => {
                   href={linkButton}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center px-4 py-2 rounded text-sm font-medium text-indigo-600 bg-white hover:bg-gradient-to-r hover:from-indigo-500 hover:to-indigo-400 hover:text-white ease-in-out">
+                  className="flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium text-indigo-600 bg-white hover:bg-gradient-to-r hover:from-indigo-500 hover:to-indigo-400 hover:text-white ease-in-out">
                   {textButton}
                 </a>
               </div>
@@ -33,7 +33,7 @@ const Banner = ({ text, textButton, linkButton }) => {
                 <button
                   onClick={() => setClose(true)}
                   type="button"
-                  className="-mr-1 flex p-1 rounded focus:outline-none sm:-mr-2 ">
+                  className="-mr-1 flex p-1 rounded-md focus:outline-none sm:-mr-2 ">
                   <XIcon className="h-6 w-6 text-white " aria-hidden="true" />
                 </button>
               </div>

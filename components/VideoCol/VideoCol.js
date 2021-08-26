@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import YouTubeEmbed from "./YouTubeEmbed";
-import { channels } from "./../../constants/constants";
+import { channels, provinces } from "./../../constants/constants";
 import Banner from "../Banner";
 import CountDown from "../CountDown";
+import Select from "../Select";
 
 const VideoCol = () => {
   const arrayChannels = channels;
-  const [activeChannel, setActiveChannel] = useState(channels[0]);
+  const [activeProvince, setActiveProvince] = useState(null);
+  const [activeChannel, setActiveChannel] = useState(null);
   const [autoplaySecondary, setAutoplaySecondary] = useState("0");
 
+  /*
   const handleClick = (embedId) => {
     arrayChannels.forEach((element) => {
       if (element.embedId === embedId) {
@@ -16,6 +19,7 @@ const VideoCol = () => {
       }
     });
   };
+  */
 
   const handleSecondaryClick = () => {
     autoplaySecondary === "0"
@@ -34,6 +38,10 @@ const VideoCol = () => {
   useEffect(() => {
     let active = channels[Math.floor(Math.random() * channels.length)];
     setActiveChannel(active);
+    
+    let activeProvince =
+      provinces[Math.floor(Math.random() * provinces.length)];
+    setActiveProvince(activeProvince);
   }, []);
 
   useEffect(() => {
@@ -64,15 +72,33 @@ const VideoCol = () => {
       </div>
 
       <div className="w-full pb-2 mb-2 flex justify-between">
-        <div className="w-full space-x-2">
-          {arrayChannels.map((channel) => (
+        <div className="w-2/5 space-x-2">
+          {activeChannel && (
+            <div className="flex">
+              <div className="w-2/3 mr-2">
+                <Select
+                  data={provinces}
+                  active={activeProvince}
+                  channelButton={false}
+                />
+              </div>
+              <Select
+                data={arrayChannels}
+                active={activeChannel}
+                setActiveChannel={setActiveChannel}
+                channelButton={true}
+              />
+            </div>
+          )}
+
+          {/*arrayChannels.map((channel) => (
             <div className="relative inline-flex rounded-md shadow-sm">
               <button
                 type="button"
                 className={
                   channel.name === activeChannel.name
-                    ? "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded transition-colors duration-500 bg-gradient-to-r from-blue-500 to-teal-400 text-white ease-in-out"
-                    : "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded bg-blue-100 dark:bg-gray-800 text-blue-400 transition-colors duration-500 bg-gradient-to-r hover:from-blue-500 hover:to-teal-400 hover:text-white ease-in-out"
+                    ? "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded-md transition-colors duration-500 bg-gradient-to-r from-blue-500 to-teal-400 text-white ease-in-out"
+                    : "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded-md bg-blue-100 dark:bg-gray-800 text-blue-400 transition-colors duration-500 bg-gradient-to-r hover:from-blue-500 hover:to-teal-400 hover:text-white ease-in-out"
                 }
                 key={channel.key}
                 active={channel.name === activeChannel.name ? true : false}
@@ -91,16 +117,16 @@ const VideoCol = () => {
                 ""
               )}
             </div>
-          ))}
+          ))*/}
         </div>
-        <div className="w-full space-x-2 flex justify-end">
+        <div className="w-2/3 space-x-2 flex justify-end">
           <button
             onClick={handleSecondaryClick}
             type="button"
             className={
               autoplaySecondary === "0"
-                ? "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded bg-purple-100 dark:bg-gray-800 text-purple-400 transition-colors duration-200 bg-gradient-to-r hover:from-purple-500 hover:to-purple-400 hover:text-white ease-in-out"
-                : "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded bg-red-100 dark:bg-gray-800 text-red-500 transition-colors duration-200 bg-gradient-to-r hover:from-red-500 hover:to-red-400 hover:text-white ease-in-out"
+                ? "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded-md bg-purple-100 dark:bg-gray-800 text-purple-400 transition-colors duration-200 bg-gradient-to-r hover:from-purple-500 hover:to-purple-400 hover:text-white ease-in-out"
+                : "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded-md bg-red-100 dark:bg-gray-800 text-red-500 transition-colors duration-200 bg-gradient-to-r hover:from-red-500 hover:to-red-400 hover:text-white ease-in-out"
             }>
             {autoplaySecondary === "0"
               ? "Reproducir Videos Secundarios"
@@ -110,12 +136,14 @@ const VideoCol = () => {
       </div>
 
       <div className="w-full h-3/3 mb-4">
-        <YouTubeEmbed
-          embedId={activeChannel.embedId}
-          height="480"
-          mute="0"
-          autoplay="1"
-        />
+        {activeChannel && (
+          <YouTubeEmbed
+            embedId={activeChannel.embedId}
+            height="480"
+            mute="0"
+            autoplay="1"
+          />
+        )}
       </div>
 
       <div className="grid grid-rows-1 grid-flow-col gap-4 mb-4">
