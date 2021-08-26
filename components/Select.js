@@ -54,7 +54,7 @@ const Select = ({ data, active, setActiveChannel, channelButton }) => {
               leave="transition ease-in duration-100"
               leaveFrom="opacity-100"
               leaveTo="opacity-0">
-              <Listbox.Options className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
+              <Listbox.Options className="absolute z-10 mt-1 w-full bg-white dark:bg-gray-800  shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
                 {data.map((d) => (
                   <Listbox.Option
                     key={d.id}
@@ -62,7 +62,7 @@ const Select = ({ data, active, setActiveChannel, channelButton }) => {
                       classNames(
                         active
                           ? "text-white bg-gradient-to-r from-blue-500 to-teal-400"
-                          : "text-gray-900",
+                          : "text-gray-900 dark:text-gray-200",
                         "cursor-pointer select-none relative py-2 pl-3 pr-9"
                       )
                     }
