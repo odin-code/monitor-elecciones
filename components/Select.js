@@ -6,12 +6,12 @@ const classNames = (...classes) => {
   return classes.filter(Boolean).join(" ");
 };
 
-const Select = ({ data, active, setActiveChannel, channelButton }) => {
+const Select = ({ data, active, handleClick, channelButton }) => {
   const [selected, setSelected] = useState(active);
 
-  useEffect(() => {
+  /*useEffect(() => {
     setActiveChannel && setActiveChannel(active);
-  }, [active]);
+  }, [active]);*/
 
   return (
     <Listbox value={selected} onChange={setSelected}>
@@ -57,26 +57,26 @@ const Select = ({ data, active, setActiveChannel, channelButton }) => {
               <Listbox.Options className="absolute z-10 mt-1 w-full bg-white dark:bg-gray-800  shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
                 {data.map((d) => (
                   <Listbox.Option
-                    key={d.id}
+                    key={d.key}
                     className={({ active }) =>
                       classNames(
                         active
                           ? "text-white bg-gradient-to-r from-blue-500 to-teal-400"
                           : "text-gray-900 dark:text-gray-200",
-                        "cursor-pointer select-none relative py-2 pl-3 pr-9"
+                        "cursor-pointer select-none relative"
                       )
                     }
                     value={d}>
                     {({ selected, active }) => (
-                      <>
+                      <div className="w-full">
                         <a
-                          className="flex items-center"
-                          onClick={() => setActiveChannel(d)}>
+                          className="flex w-full no-scrollbar items-center my-2"
+                          onClick={() => handleClick(d.embedId)}>
                           {d.img ? (
                             <img
                               src={d.img}
                               alt=""
-                              className="flex-shrink-0 h-6 w-6 rounded-full"
+                              className="flex-shrink-0 h-6 w-6 rounded-full my-2 ml-2"
                             />
                           ) : (
                             ""
@@ -87,19 +87,22 @@ const Select = ({ data, active, setActiveChannel, channelButton }) => {
                               "ml-3 block truncate"
                             )}>
                             {d.name}
+
+                            {selected ? (
+                              <span
+                                className={classNames(
+                                  active ? "text-white" : "text-blue-500",
+                                  "absolute inset-y-0 right-0 flex items-center pr-4"
+                                )}>
+                                <CheckIcon
+                                  className="h-5 w-5"
+                                  aria-hidden="true"
+                                />
+                              </span>
+                            ) : null}
                           </span>
                         </a>
-
-                        {selected ? (
-                          <span
-                            className={classNames(
-                              active ? "text-white" : "text-blue-500",
-                              "absolute inset-y-0 right-0 flex items-center pr-4"
-                            )}>
-                            <CheckIcon className="h-5 w-5" aria-hidden="true" />
-                          </span>
-                        ) : null}
-                      </>
+                      </div>
                     )}
                   </Listbox.Option>
                 ))}

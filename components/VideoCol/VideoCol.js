@@ -10,8 +10,7 @@ const VideoCol = () => {
   const [activeProvince, setActiveProvince] = useState(null);
   const [activeChannel, setActiveChannel] = useState(null);
   const [autoplaySecondary, setAutoplaySecondary] = useState("0");
-
-  /*
+  
   const handleClick = (embedId) => {
     arrayChannels.forEach((element) => {
       if (element.embedId === embedId) {
@@ -19,7 +18,6 @@ const VideoCol = () => {
       }
     });
   };
-  */
 
   const handleSecondaryClick = () => {
     autoplaySecondary === "0"
@@ -85,7 +83,7 @@ const VideoCol = () => {
               <Select
                 data={arrayChannels}
                 active={activeChannel}
-                setActiveChannel={setActiveChannel}
+                handleClick={handleClick}
                 channelButton={true}
               />
             </div>
