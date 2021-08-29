@@ -10,7 +10,7 @@ const VideoCol = () => {
   const [activeProvince, setActiveProvince] = useState(null);
   const [activeChannel, setActiveChannel] = useState(null);
   const [autoplaySecondary, setAutoplaySecondary] = useState("0");
-  
+
   const handleClick = (embedId) => {
     arrayChannels.forEach((element) => {
       if (element.embedId === embedId) {
@@ -36,7 +36,7 @@ const VideoCol = () => {
   useEffect(() => {
     let active = channels[Math.floor(Math.random() * channels.length)];
     setActiveChannel(active);
-    
+
     let activeProvince =
       provinces[Math.floor(Math.random() * provinces.length)];
     setActiveProvince(activeProvince);
@@ -88,43 +88,16 @@ const VideoCol = () => {
               />
             </div>
           )}
-
-          {/*arrayChannels.map((channel) => (
-            <div className="relative inline-flex rounded-md shadow-sm">
-              <button
-                type="button"
-                className={
-                  channel.name === activeChannel.name
-                    ? "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded-md transition-colors duration-500 bg-gradient-to-r from-blue-500 to-teal-400 text-white ease-in-out"
-                    : "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded-md bg-blue-100 dark:bg-gray-800 text-blue-400 transition-colors duration-500 bg-gradient-to-r hover:from-blue-500 hover:to-teal-400 hover:text-white ease-in-out"
-                }
-                key={channel.key}
-                active={channel.name === activeChannel.name ? true : false}
-                value={channel.embedId}
-                onClick={(e) => handleClick(e.target.value)}>
-                {channel.name}
-              </button>
-              {channel.name === activeChannel.name ? (
-                <div className="flex absolute top-0 right-0 -mt-0.5 -mr-1">
-                  <span className="absolute inline-flex animate-ping">
-                    <span className="inline-flex rounded-full h-3 w-3 bg-pink-300 opacity-75"></span>
-                  </span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-400"></span>
-                </div>
-              ) : (
-                ""
-              )}
-            </div>
-          ))*/}
         </div>
+
         <div className="w-2/3 space-x-2 flex justify-end">
           <button
             onClick={handleSecondaryClick}
             type="button"
             className={
               autoplaySecondary === "0"
-                ? "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded-md bg-purple-100 dark:bg-gray-800 text-purple-400 transition-colors duration-200 bg-gradient-to-r hover:from-purple-500 hover:to-purple-400 hover:text-white ease-in-out"
-                : "inline-flex items-center px-4 py-2 text-base leading-6 font-medium rounded-md bg-red-100 dark:bg-gray-800 text-red-500 transition-colors duration-200 bg-gradient-to-r hover:from-red-500 hover:to-red-400 hover:text-white ease-in-out"
+                ? "inline-flex items-center px-4 py-1 text-base leading-6 font-medium rounded-md bg-purple-100 dark:bg-gray-800 text-purple-400 transition-colors duration-200 bg-gradient-to-r hover:from-purple-500 hover:to-purple-400 hover:text-white ease-in-out"
+                : "inline-flex items-center px-4 py-1 text-base leading-6 font-medium rounded-md bg-red-100 dark:bg-gray-800 text-red-500 transition-colors duration-200 bg-gradient-to-r hover:from-red-500 hover:to-red-400 hover:text-white ease-in-out"
             }>
             {autoplaySecondary === "0"
               ? "Reproducir Videos Secundarios"

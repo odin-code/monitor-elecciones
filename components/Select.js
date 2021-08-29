@@ -1,4 +1,5 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
+import Image from "next/image";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 
@@ -8,6 +9,7 @@ const classNames = (...classes) => {
 
 const Select = ({ data, active, handleClick, channelButton }) => {
   const [selected, setSelected] = useState(active);
+  console.log(selected);
 
   /*useEffect(() => {
     setActiveChannel && setActiveChannel(active);
@@ -21,9 +23,11 @@ const Select = ({ data, active, handleClick, channelButton }) => {
             <Listbox.Button className="py-2 cursor-pointer relative w-full bg-white dark:bg-gray-800 border dark:border-none border-gray-200 rounded-md pl-3 pr-10 text-left focus:outline-none sm:text-sm">
               <span className="flex items-center">
                 {selected.img ? (
-                  <img
+                  <Image
                     src={selected.img}
-                    alt=""
+                    alt={selected.name}
+                    width={24}
+                    height={24}
                     className="flex-shrink-0 h-6 w-6 rounded-full"
                   />
                 ) : (
@@ -75,17 +79,18 @@ const Select = ({ data, active, handleClick, channelButton }) => {
                           {d.img ? (
                             <img
                               src={d.img}
-                              alt=""
+                              alt={d.name}
                               className="flex-shrink-0 h-6 w-6 rounded-full my-2 ml-2"
                             />
                           ) : (
-                            ""
+                            <div className="flex-shrink-0 h-6 w-1 my-2 ml-2" />
                           )}
                           <span
                             className={classNames(
                               selected ? "font-semibold" : "font-normal",
                               "ml-3 block truncate"
                             )}>
+                            
                             {d.name}
 
                             {selected ? (
