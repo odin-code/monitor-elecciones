@@ -80,7 +80,7 @@ const Select = ({ data, active, handleClick, channelButton }) => {
                             <img
                               src={d.img}
                               alt={d.name}
-                              className="flex-shrink-0 h-6 w-6 rounded-full my-2 ml-2"
+                              className="flex-shrink-0 h-6 w-6 rounded-full my-2 ml-3"
                             />
                           ) : (
                             <div className="flex-shrink-0 h-6 w-1 my-2 ml-2" />
