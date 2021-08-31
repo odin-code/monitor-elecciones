@@ -125,18 +125,17 @@ const VideoCol = () => {
       </div>
 
       <div className="grid grid-rows-1 grid-flow-col gap-4 mb-4">
-        {arrayChannels.map((channel) =>
-          channel === activeChannel ? (
-            ""
-          ) : (
-            <YouTubeEmbed
-              embedId={channel.embedId}
-              height="200"
-              key={channel.key}
-              mute="1"
-              autoplay={autoplaySecondary}
-            />
-          )
+        {arrayChannels.map(
+          (channel) =>
+            channel.name !== activeChannel.name && (
+              <YouTubeEmbed
+                embedId={channel.embedId}
+                height="200"
+                key={channel.key}
+                mute="1"
+                autoplay={autoplaySecondary}
+              />
+            )
         )}
       </div>
     </div>
