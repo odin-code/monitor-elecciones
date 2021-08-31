@@ -35,12 +35,12 @@ const VideoCol = () => {
   }
 
   useEffect(() => {
-    let active = channels[Math.floor(Math.random() * channels.length)];
     if (localStorage.getItem("activeChannel")) {
       const savedChannel = localStorage.getItem("activeChannel");
       const initialValue = JSON.parse(savedChannel);
       setActiveChannel(initialValue);
     } else {
+      let active = channels[Math.floor(Math.random() * channels.length)];
       setActiveChannel(active);
     }
 
@@ -125,18 +125,19 @@ const VideoCol = () => {
       </div>
 
       <div className="grid grid-rows-1 grid-flow-col gap-4 mb-4">
-        {arrayChannels.map(
-          (channel) =>
-            channel.name !== activeChannel.name && (
-              <YouTubeEmbed
-                embedId={channel.embedId}
-                height="200"
-                key={channel.key}
-                mute="1"
-                autoplay={autoplaySecondary}
-              />
-            )
-        )}
+        {activeChannel &&
+          arrayChannels.map(
+            (channel) =>
+              channel.name !== activeChannel.name && (
+                <YouTubeEmbed
+                  embedId={channel.embedId}
+                  height="200"
+                  key={channel.key}
+                  mute="1"
+                  autoplay={autoplaySecondary}
+                />
+              )
+          )}
       </div>
     </div>
   );
