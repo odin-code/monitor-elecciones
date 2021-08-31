@@ -15,6 +15,7 @@ const VideoCol = () => {
     arrayChannels.forEach((element) => {
       if (element.embedId === embedId) {
         setActiveChannel(element);
+        localStorage.setItem("activeChannel", JSON.stringify(element));
       }
     });
   };
@@ -35,7 +36,13 @@ const VideoCol = () => {
 
   useEffect(() => {
     let active = channels[Math.floor(Math.random() * channels.length)];
-    setActiveChannel(active);
+    if (localStorage.getItem("activeChannel")) {
+      const savedChannel = localStorage.getItem("activeChannel");
+      const initialValue = JSON.parse(savedChannel);
+      setActiveChannel(initialValue);
+    } else {
+      setActiveChannel(active);
+    }
 
     let activeProvince =
       provinces[Math.floor(Math.random() * provinces.length)];
