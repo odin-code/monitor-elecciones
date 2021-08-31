@@ -11,7 +11,7 @@ const TweetsCol = () => {
   useEffect(() => {
     const getData = async () => {
       await fetch(
-        "https://argentina-2021.herokuapp.com/tweets?ht=carpincho"
+        "https://argentina-2021.herokuapp.com/tweets?ht=paso2021"
       ).then((response) =>
         response.json().then((data) => {
           setDataTweets(data.data);
