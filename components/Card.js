@@ -22,7 +22,7 @@ const Card = ({ role, name, img, details, linkRepo, github, linkedin }) => {
           </a>
           <p class="mt-2 text-gray-500 dark:text-gray-400">{details}</p>
           <p class="mt-2 font-semibold text-black dark:text-gray-300">Código del proyecto:</p>
-          <a href={{ linkRepo }} className="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300">
+          <a href={ linkRepo } className="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300">
             {linkRepo}
           </a>
           <div className="flex items-center mt-4 space-x-2">
