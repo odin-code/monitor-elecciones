@@ -6,7 +6,7 @@ const about = () => {
   return (
     <div className="flex flex-row h-screen overflow-auto">
       <SidebarMenu
-        title="Monitor Elecciones PASO 2021 | Sobre Nosotros"
+        title="Monitor Elecciones Legislativas 2021 | Sobre Nosotros"
         description="Canales, tweets e información digital sobre las elecciones legislativas."
       />
       <AboutUs />

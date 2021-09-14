@@ -58,8 +58,8 @@ const VideoCol = () => {
       <Banner
         text={
           <CountDown
-            text="Elecciones PASO 2021: "
-            textIf="Las Elecciones PASO 2021 se llevan a cabo el día de hoy, no te olvides
+            text="Elecciones Legislativas 2021: "
+            textIf="Las Elecciones Legislativas 2021 se llevan a cabo el día de hoy, no te olvides
           de votar"
           />
         }

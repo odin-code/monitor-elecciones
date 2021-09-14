@@ -15,8 +15,8 @@ const SidebarMenu = (props) => {
   const [mounted, setMounted] = useState(false);
   const { children, ...customMeta } = props;
   const meta = {
-    title: "Monitor Elecciones PASO 2021 | Canales y Tweets en Vivo",
-    description: "Canales, tweets e información digital sobre las elecciones legislativas",
+    title: "Monitor Elecciones Legislativas 2021 | Canales y Tweets en Vivo",
+    description: "Canales, tweets e información digital sobre las Elecciones Legislativas Argentinas",
     image: "https://leerob.io/static/monitor-elecciones-paso-2021.jpg",
     type: "website",
     ...customMeta,
@@ -71,7 +71,7 @@ const SidebarMenu = (props) => {
             <a className="text-3xl font-bold mt-16 tracking-tighter">
               Monitor
               <p className="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
-                PASO 2021
+                Elecciones Argentinas 2021
               </p>
             </a>
           </Link>
