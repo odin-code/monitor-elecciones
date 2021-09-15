@@ -13,7 +13,7 @@ export const channels = [
   },
   {
     name: "C5N",
-    embedId: "KNJA4-JSx1M",
+    embedId: "NQqCjfFDWSQ",
     img: "https://i.ibb.co/sjxWwvz/c5n.jpg",
     key: 2,
   },
