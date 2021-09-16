@@ -66,7 +66,7 @@ const SidebarMenu = (props) => {
         )}
       </Head>
       <div className="w-2/12 flex flex-col items-center bg-gray-900 dark:bg-gray-1000 py-4 text-white ">
-        <div className="flex flex-col h-full justify-between w-3/5">
+        <div className="flex flex-col h-full justify-between w-4/5">
           <Link href="/">
             <a className="text-3xl font-bold mt-16 tracking-tighter">
               Monitor
