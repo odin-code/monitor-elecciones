@@ -13,13 +13,13 @@ export const channels = [
   },
   {
     name: "C5N",
-    embedId: "NQqCjfFDWSQ",
+    embedId: "1xKycSal5SE",
     img: "https://i.ibb.co/sjxWwvz/c5n.jpg",
     key: 2,
   },
   {
     name: "Crónica TV",
-    embedId: "Sxu0qCfUdqw",
+    embedId: "GyRdMkZcFWk",
     img: "https://i.ibb.co/9Tt6Ftr/cronica-tv.jpg",
     key: 3,
   },
