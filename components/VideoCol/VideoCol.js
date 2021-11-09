@@ -124,7 +124,7 @@ const VideoCol = () => {
         )}
       </div>
 
-      <div className="grid grid-cols-3  grid-flow-col gap-4 mb-4">
+      <div className="grid grid-cols-3 grid-rows-2 grid-flow-col gap-4 mb-4">
         {activeChannel &&
           arrayChannels.map(
             (channel) =>
