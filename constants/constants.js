@@ -23,6 +23,18 @@ export const channels = [
     img: "https://i.ibb.co/9Tt6Ftr/cronica-tv.jpg",
     key: 3,
   },
+  {
+    name: "IP Noticias",
+    embedId: "cqhoIPKPBIg",
+    img: "",
+    key: 4,
+  },
+  {
+    name: "TV Pública",
+    embedId: "W8HX4mygRIc",
+    img: "",
+    key: 5,
+  },
 ];
 
 export const provinces = [{ name: "CABA", key: 0 }];
