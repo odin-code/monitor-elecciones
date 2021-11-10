@@ -9,7 +9,6 @@ const classNames = (...classes) => {
 
 const Select = ({ data, active, handleClick, channelButton }) => {
   const [selected, setSelected] = useState(active);
-  console.log(selected);
 
   /*useEffect(() => {
     setActiveChannel && setActiveChannel(active);

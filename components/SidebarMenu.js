@@ -65,7 +65,7 @@ const SidebarMenu = (props) => {
           <meta property="article:published_time" content={meta.date} />
         )}
       </Head>
-      <div className="w-2/12 flex flex-col items-center bg-gray-900 dark:bg-gray-1000 py-4 text-white ">
+      <div className="w-2/12 hidden lg:flex lg:flex-col items-center bg-gray-900 dark:bg-gray-1000 py-4 text-white ">
         <div className="flex flex-col h-full justify-between w-4/5">
           <Link href="/">
             <a className="text-3xl font-bold mt-16 tracking-tighter">

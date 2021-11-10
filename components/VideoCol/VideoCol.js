@@ -54,7 +54,7 @@ const VideoCol = () => {
   }, [arrayChannels]);
 
   return (
-    <div className="w-7/12 bg-gray-50 dark:bg-gray-900 flex flex-col no-scrollbar overflow-auto min-h-full p-6 border-r border-r-gray-300 dark:border-none">
+    <div className="w-12/12 lg:w-7/12 bg-gray-50 dark:bg-gray-900 flex flex-col no-scrollbar overflow-auto min-h-full p-6 border-r border-r-gray-300 dark:border-none">
       <Banner
         text={
           <CountDown
@@ -77,7 +77,7 @@ const VideoCol = () => {
       </div>
 
       <div className="w-full pb-2 mb-2 flex justify-between">
-        <div className="w-2/5 space-x-2">
+        <div className="w-full sm:w-2/5 space-x-2">
           {activeChannel && (
             <div className="flex">
               <div className="w-2/3 mr-2">
@@ -96,8 +96,8 @@ const VideoCol = () => {
             </div>
           )}
         </div>
-
-        <div className="w-2/3 space-x-2 flex justify-end">
+        {/* 
+        <div className="hidden md:w-2/3 space-x-2 md:flex md:justify-end">
           <button
             onClick={handleSecondaryClick}
             type="button"
@@ -111,6 +111,7 @@ const VideoCol = () => {
               : "Detener Videos Secundarios"}
           </button>
         </div>
+        */}
       </div>
 
       <div className="w-full h-3/3 mb-4">
