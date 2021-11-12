@@ -7,7 +7,7 @@ function CountDown({ text, textIf }) {
     const electionDay = moment([2021, 10, 14, "08:00"]);
     const days = electionDay.diff(today, "days");
     const hours = electionDay.diff(today, "hours");
-    const timeLeft = {
+    let timeLeft = {
       days: days,
       hours: hours,
     };
@@ -15,7 +15,7 @@ function CountDown({ text, textIf }) {
     return timeLeft;
   };
 
-  const timeLeft = (calculateTimeLeft());
+  const timeLeft = calculateTimeLeft();
   let message = timeLeft.days === 1 ? "horas" : "días";
 
   return (
