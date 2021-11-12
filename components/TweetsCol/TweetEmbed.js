@@ -86,7 +86,7 @@ const TweetEmbed = ({ tweet, users, medias, quotedTweets }) => {
 
   useEffect(() => {
     medias && mediaID && getMedia(mediaID);
-  }, [medias]);
+  }, [medias, mediaID]);
 
   useEffect(() => {
     quotedTweet && setQuote(quotedTweet.id);
