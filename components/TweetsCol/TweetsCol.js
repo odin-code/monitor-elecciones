@@ -26,8 +26,9 @@ const TweetsCol = () => {
 
   useEffect(() => {
     getData();
-    const timer = setTimeout(setReloadButton(true), 60000);
-    return () => clearTimeout(timer);
+    setTimeout(() => {
+      setReloadButton(true);
+    }, 60000);
   }, []);
 
   const handleClick = () => {
