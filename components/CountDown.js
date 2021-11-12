@@ -1,22 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
+import moment from "moment";
 
 function CountDown({ text, textIf }) {
   const calculateTimeLeft = () => {
-    let year = new Date().getFullYear();
-    const difference = +new Date(`${year}-11-14`) - +new Date();
-    let timeLeft =
-      difference > 0 ? Math.floor(difference / (1000 * 60 * 60 * 24)) : null;
+    const today = moment();
+    const electionDay = moment([2021, 10, 14, "08:00"]);
+    const days = electionDay.diff(today, "days");
+    const hours = electionDay.diff(today, "hours");
+    const timeLeft = {
+      days: days,
+      hours: hours,
+    };
 
     return timeLeft;
   };
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-  let days = timeLeft === 1 ? "día" : "días";
-  let areLeft = timeLeft === 1 ? "Falta" : "Faltan";
+  const timeLeft = (calculateTimeLeft());
+  let message = timeLeft.days === 1 ? "horas" : "días";
 
   return (
     <div>
-      {timeLeft ? `${text} ${areLeft} ${timeLeft} ${days}` : <span>{textIf}</span>}
+      {timeLeft.hours > 1 ? (
+        `${text} Faltan ${
+          timeLeft.days === 1 ? timeLeft.hours : timeLeft.days
+        } ${message}`
+      ) : (
+        <span>{textIf}</span>
+      )}
     </div>
   );
 }
