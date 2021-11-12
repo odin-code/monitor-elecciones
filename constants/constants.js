@@ -13,7 +13,7 @@ export const channels = [
   },
   {
     name: "C5N",
-    embedId: "RmvgK_GWQo0",
+    embedId: "jN0TnHxhliA",
     img: "https://i.ibb.co/sjxWwvz/c5n.jpg",
     key: 2,
   },
@@ -31,7 +31,7 @@ export const channels = [
   },
   {
     name: "TV Pública",
-    embedId: "W8HX4mygRIc",
+    embedId: "RQA4tJ3tRxk",
     img: "",
     key: 5,
   },

@@ -12,30 +12,30 @@ const TweetsCol = () => {
 
   const getData = async () => {
     setLoading(true);
-    await fetch(
-      "https://argentina-2021.herokuapp.com/tweets?ht=paso2021"
-    ).then((response) =>
-      response.json().then((data) => {
-        setDataTweets(data.data);
-        setQuotedTweets(data.includes.tweets);
-        setUsers(data.includes.users);
-        setMedias(data.includes.media);
-      })
+    await fetch("https://argentina-2021.herokuapp.com/tweets?ht=eleccionesargentina").then(
+      (response) =>
+        response.json().then((data) => {
+          setDataTweets(data.data);
+          setQuotedTweets(data.includes.tweets);
+          setUsers(data.includes.users);
+          setMedias(data.includes.media);
+        })
     );
     setLoading(false);
   };
 
   useEffect(() => {
     getData();
-    const interval = setInterval(() => {
-      setReloadButton(true)
-    }, 300000);
-    return () => clearInterval(interval);
+    const timer = setTimeout(setReloadButton(true), 60000);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleClick = () => {
     getData();
     setReloadButton(false);
+    setTimeout(() => {
+      setReloadButton(true);
+    }, 60000);
   };
 
   return (
@@ -50,7 +50,11 @@ const TweetsCol = () => {
           </h4>
         ) : (
           <div class="w-full flex justify-center">
-            <button onClick={handleClick} class="bg-gradient-to-r from-blue-500 to-teal-400 text-white font-medium p-2 rounded-md hover:bg-blue-800">Cargar Tweets</button>
+            <button
+              onClick={handleClick}
+              class="bg-gradient-to-r from-blue-500 to-teal-400 text-white font-medium px-4 py-2 rounded-md hover:bg-blue-800">
+              Cargar Tweets
+            </button>
           </div>
         )}
       </div>
