@@ -22,7 +22,7 @@ function CountDown({ text, textIf }) {
     <div>
       {timeLeft.hours > 1 ? (
         `${text} Faltan ${
-          timeLeft.days === 1 ? timeLeft.hours : timeLeft.days
+          timeLeft.days <= 1 ? timeLeft.hours : timeLeft.days
         } ${message}`
       ) : (
         <span>{textIf}</span>
