@@ -16,7 +16,7 @@ function CountDown({ text, textIf }) {
   };
 
   const timeLeft = calculateTimeLeft();
-  let message = timeLeft.days === 1 ? "horas" : "días";
+  let message = timeLeft.days <= 1 ? "horas" : "días";
 
   return (
     <div>
