@@ -12,7 +12,9 @@ const TweetsCol = () => {
 
   const getData = async () => {
     setLoading(true);
-    await fetch("https://argentina-2021.herokuapp.com/tweets?ht=eleccionesargentina").then(
+    await fetch("https://argentina-2021.herokuapp.com/tweets?ht=Kuwait" , {
+  cors: 'no-cors'
+}).then(
       (response) =>
         response.json().then((data) => {
           setDataTweets(data.data);

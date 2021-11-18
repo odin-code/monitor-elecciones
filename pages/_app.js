@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider enableSystem={true} attribute="class">
       <Head>
-        <title>Monitor PASO 2021</title>
+        <title>الواحة</title>
       </Head>
       <Component {...pageProps} />
     </ThemeProvider>

@@ -1,6 +1,6 @@
 export const channels = [
   {
-    name: "TN",
+    name: "القرآن الكريم",
     embedId: "wHn1_QVoXGM",
     img: "https://i.ibb.co/Vxp7NHS/tn.png",
     key: 0,
@@ -37,4 +37,4 @@ export const channels = [
   },
 ];
 
-export const provinces = [{ name: "CABA", key: 0 }];
+export const provinces = [{ name: "القرآن", key: 0 }];
