@@ -59,11 +59,10 @@ const VideoCol = () => {
         text={
           <CountDown
             text="Elecciones Legislativas 2021: "
-            textIf="Las Elecciones Legislativas 2021 se llevan a cabo el día de hoy, no te olvides
-          de votar"
+            textIf=" الأخبار الهامة على مدار الثانية"
           />
         }
-        textButton="Más información"
+        textButton="تفاصيل أكثر"
         linkButton={"https://www.electoral.gob.ar/nuevo/index.php"}
       />
 

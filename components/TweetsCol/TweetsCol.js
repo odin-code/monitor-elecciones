@@ -3,16 +3,16 @@ import TweetEmbed from "./TweetEmbed";
 import TweetPulse from "./TweetPulse";
 
 const TweetsCol = () => {
-  const [loading, setLoading] = useState(true);
-  const [dataTweets, setDataTweets] = useState();
-  const [quotedTweets, setQuotedTweets] = useState();
-  const [users, setUsers] = useState();
-  const [medias, setMedias] = useState();
-  const [reloadButton, setReloadButton] = useState();
-
+  const [loading, setLoading] = useState(false);
+  const [dataTweets, setDataTweets] = useState(false);
+  const [quotedTweets, setQuotedTweets] = useState(false);
+  const [users, setUsers] = useState(false);
+  const [medias, setMedias] = useState(false);
+  const [reloadButton, setReloadButton] = useState(false);
+const ss=encodeURIComponent('kuwait (الكويت OR or OR كويت)') ;
   const getData = async () => {
-    setLoading(true);
-    await fetch("https://argentina-2021.herokuapp.com/tweets?ht=eleccionesargentina").then(
+    setLoading(false);
+    await fetch("https://argentina-2021.herokuapp.com/tweets?ht=kuwait city").then(
       (response) =>
         response.json().then((data) => {
           setDataTweets(data.data);
@@ -25,10 +25,13 @@ const TweetsCol = () => {
   };
 
   useEffect(() => {
-    getData();
+	   setInterval(() => {
+                 getData();
+            },5000);
+
     setTimeout(() => {
       setReloadButton(true);
-    }, 60000);
+    }, 1000);
   }, []);
 
   const handleClick = () => {
@@ -36,7 +39,7 @@ const TweetsCol = () => {
     setReloadButton(false);
     setTimeout(() => {
       setReloadButton(true);
-    }, 60000);
+    }, 6000);
   };
 
   return (
@@ -54,7 +57,7 @@ const TweetsCol = () => {
             <button
               onClick={handleClick}
               class="bg-gradient-to-r from-blue-500 to-teal-400 text-white font-medium px-4 py-2 rounded-md hover:bg-blue-800">
-              Cargar Tweets
+              تغريدات جديدة
             </button>
           </div>
         )}
